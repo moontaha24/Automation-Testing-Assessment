@@ -23,3 +23,33 @@
 #### 1. Install dependencies:
 ```bash
 npm install
+
+🔁 After running the test, Playwright automatically stores results.
+
+💻 1. Prerequisites (Only once)
+Install Allure dependencies in Q3_Playwright:
+
+npm install -D allure-playwright allure-commandline
+Make sure you have the following in your playwright.config.js:
+
+reporter: [
+  ['list'],
+  ['allure-playwright'],
+],
+
+
+🚀 2. Run the Playwright Test
+
+From Q3_Playwright folder:
+
+npx playwright test
+
+✅ This will generate allure-results/ in the folder.
+
+🌐 3. Generate the Allure HTML Report:
+
+allure generate ./allure-results --clean -o ./allure-report
+
+To open the report:
+
+allure open ./allure-report
