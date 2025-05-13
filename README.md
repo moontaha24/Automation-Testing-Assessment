@@ -1,9 +1,61 @@
-# Saucedemo Automation Tests
+# 🧪 Automation Testing Assessment - SauceDemo.com
 
-This repository contains automation tests for the **Saucedemo** website using **Postman** and **Playwright**.
+This repository contains automation solutions for the given test scenarios on [https://www.saucedemo.com](https://www.saucedemo.com), implemented using Postman and Playwright.
 
-## Tests Overview
+---
 
-1. **Q1**: Tests logging in with a locked-out user and verifying the error message using Postman.
-2. **Q2**: Logs in with a standard user, resets the app state, adds products to the cart, goes through checkout, and finishes the purchase using Postman.
-3. **Q3**: Logs in with a performance-glitch user, filters products, adds to the cart, checks out, and verifies the purchase using Playwright.
+## ✅ Q1 - Login with locked_out_user
+
+- **Tech Used:** Postman + JavaScript + Allure Reporting
+- **Steps:**
+  1. Import collection and environment from `Q1_Postman/`
+  2. Run using Postman or Newman
+  3. Generate Allure report
+
+📂 See `Q1_Postman/README.md` for full instructions.
+
+---
+
+## ✅ Q2 - Login, Add to Cart, Checkout with standard_user
+
+- **Tech Used:** Postman + JavaScript + Allure Reporting
+- **Steps:**
+  1. Import collection and environment from `Q2_Postman/`
+  2. Run using Postman or Newman
+  3. Generate Allure report
+
+📂 See `Q2_Postman/README.md` for full instructions.
+
+---
+
+## ✅ Q3 - UI Automation using Playwright
+
+- **Tech Used:** Playwright + JavaScript + Allure Reporting
+- **Steps:**
+  1. Navigate to `Q3_Playwright/`
+  2. Install dependencies
+  3. Run test & generate Allure report
+
+📂 See `Q3_Playwright/README.md` for step-by-step guide.
+
+---
+
+## ⚙️ How to Run All Tests Together
+
+Each scenario is separated, but you can run them in sequence manually.  
+If you want, you can later create a master script to call each project one by one.
+
+---
+
+## 📌 Note
+
+- All test cases can be run separately and produce Allure reports
+- Compatible with Windows machine
+- README provided for each scenario
+
+---
+
+## 💻 Author
+
+**Moontaha**  
+
