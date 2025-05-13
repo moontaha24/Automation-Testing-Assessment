@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "allure-commandline": "^2.34.0",
+    "newman-reporter-allure": "^3.2.2"
+  },
+  "scripts": {
+    "run:q1": "newman run Q1_Postman/Q1_postman_collection.json -r cli,allure",
+    "run:q2": "newman run Q2_Postman/Q2_postman_collection.json -r cli,allure",
+    "run:q3": "npx playwright test Q3_Playwright/tests/q3.test.js --reporter=allure-playwright",
+    "run:all": "npm run run:q1 && npm run run:q2 && npm run run:q3"
+  }
+}

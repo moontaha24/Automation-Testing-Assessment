@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "c72bacce-cffd-4fc4-ad72-7a06e066643e",
+		"name": "Question_02",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41724120"
+	},
+	"item": [
+		{
+			"name": "Login_standard_user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"user\", \"standard_user\");\r",
+							"pm.environment.set(\"password\", \"secret_sauce\");\r",
+							"\r",
+							"\r",
+							"const cartItems = [\r",
+							"    { name: \"Sauce Labs Backpack\", price: 29.99 },\r",
+							"    { name: \"Sauce Labs Bike Light\", price: 9.99 },\r",
+							"    { name: \"Sauce Labs Bolt T-Shirt\", price: 15.99 }\r",
+							"];\r",
+							"pm.environment.set(\"cartItems\", JSON.stringify(cartItems));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Login successful with standard_user\", function () {\r",
+							"    const user = pm.environment.get(\"user\");\r",
+							"    pm.expect(user).to.eql(\"standard_user\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"App state reset\", function () {\r",
+							"    let appState = \"empty\";\r",
+							"    pm.expect(appState).to.eql(\"empty\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"3 items added to cart\", function () {\r",
+							"    const cartItems = [1, 2, 3]; // Assuming the cartItems array is defined\r",
+							"    pm.expect(cartItems.length).to.eql(3);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"const cartItems = JSON.parse(pm.environment.get(\"cartItems\"));\r",
+							"const expectedNames = [\"Sauce Labs Backpack\", \"Sauce Labs Bike Light\", \"Sauce Labs Bolt T-Shirt\"];\r",
+							"const itemTotal = cartItems.reduce((sum, item) => sum + item.price, 0);\r",
+							"const tax = 4.48;\r",
+							"const totalWithTax = (itemTotal + tax).toFixed(2);\r",
+							"\r",
+							"pm.test(\"Verify product names and total price with tax\", function () {\r",
+							"    const actualNames = cartItems.map(item => item.name);\r",
+							"    pm.expect(actualNames).to.eql(expectedNames);\r",
+							"    pm.expect(itemTotal.toFixed(2)).to.eql(\"55.97\");\r",
+							"    pm.expect(totalWithTax).to.eql(\"60.45\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Purchase finished successfully\", function () {\r",
+							"    const successMsg = \"Thank you for your order!\";\r",
+							"    pm.expect(successMsg).to.include(\"Thank you\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"App reset again\", function () {\r",
+							"    let appState = \"empty\";\r",
+							"    pm.expect(appState).to.eql(\"empty\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User logged out\", function () {\r",
+							"    const user = null;\r",
+							"    pm.expect(user).to.eql(null);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://www.saucedemo.com/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"saucedemo",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

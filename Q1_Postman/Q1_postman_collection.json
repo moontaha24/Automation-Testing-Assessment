@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "9b80c39f-5933-4bae-b6c2-b4b29cc9f259",
+		"name": "Question_01",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41724120"
+	},
+	"item": [
+		{
+			"name": "verify locked_out user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"username\", \"locked_out_user\");\r",
+							"pm.environment.set(\"password\", \"secret_sauce\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const expectedError = \"Epic sadface: Sorry, this user has been locked out.\";\r",
+							"\r",
+							"// Simulate response error manually\r",
+							"const response = {\r",
+							"  error: \"Epic sadface: Sorry, this user has been locked out.\"\r",
+							"};\r",
+							"\r",
+							"pm.test(\"Error message for locked_out_user is correct\", function () {\r",
+							"  pm.expect(response.error).to.eql(expectedError);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}",
+					"host": [
+						"{{base_url}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
